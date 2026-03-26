@@ -55,7 +55,7 @@ export function SynthesisPage() {
             </div>
             <div>
               <h2 className="text-3xl text-gray-100">Retrouvez ici le tableau de synthèse</h2>
-              <p className="text-gray-400 mt-1">Document récapitulatif complet de vos réalisations</p>
+              <p className="text-gray-400 mt-1">Document récapitulatif complet de mes réalisations</p>
             </div>
           </motion.div>
 
@@ -66,9 +66,10 @@ export function SynthesisPage() {
             transition={{ delay: 0.3 }}
             className="text-gray-300 mb-8 leading-relaxed"
           >
-            Ce tableau synthétise l'ensemble de vos projets, compétences, réalisations professionnelles
-            et contributions au sein de votre organisation. Il offre une vue d'ensemble complète et
-            structurée de votre parcours et expertise.
+            Ce tableau synthétise l'ensemble de mes projets, compétences, réalisations professionnelles
+            et contributions au sein de mon organisation. Il offre une vue d'ensemble complète et
+            structurée de mon parcours et expertise, mettant en évidence l'impact de mes interventions
+            sur l'infrastructure et la sécurité des systèmes d'information.
           </motion.p>
 
           {/* Download Button */}

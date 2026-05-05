@@ -14,6 +14,9 @@ export function BrowserFrame({ children, currentPage, onNavigate }: BrowserFrame
     { id: 'home', title: 'Accueil', url: 'portfolio.dev/home', active: true },
   ]);
   const [urlBar, setUrlBar] = useState('portfolio.dev/home');
+  const [history, setHistory] = useState(['home']);
+  const [historyIndex, setHistoryIndex] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const pageData = {
     home: { title: 'Accueil - Mon Portfolio', url: 'portfolio.dev/home' },
@@ -23,9 +26,37 @@ export function BrowserFrame({ children, currentPage, onNavigate }: BrowserFrame
     synthesis: { title: 'Tableau de Synthèse', url: 'portfolio.dev/synthese' },
   };
 
+  const goBack = () => {
+    if (historyIndex > 0) {
+      const newIndex = historyIndex - 1;
+      setHistoryIndex(newIndex);
+      onNavigate(history[newIndex]);
+    }
+  };
+
+  const goForward = () => {
+    if (historyIndex < history.length - 1) {
+      const newIndex = historyIndex + 1;
+      setHistoryIndex(newIndex);
+      onNavigate(history[newIndex]);
+    }
+  };
+
+  const refreshPage = () => {
+    setRefreshKey(prev => prev + 1);
+  };
+
   useEffect(() => {
     const data = pageData[currentPage as keyof typeof pageData];
     setUrlBar(data.url);
+    
+    // Mettre à jour l'historique si on navigue vers une nouvelle page
+    if (history[historyIndex] !== currentPage) {
+      const newHistory = history.slice(0, historyIndex + 1);
+      newHistory.push(currentPage);
+      setHistory(newHistory);
+      setHistoryIndex(newHistory.length - 1);
+    }
     
     const existingTab = tabs.find(tab => tab.id === currentPage);
     if (!existingTab) {
@@ -101,13 +132,24 @@ export function BrowserFrame({ children, currentPage, onNavigate }: BrowserFrame
       {/* Navigation Bar - Firefox Dark */}
       <div className="bg-[#42414d] px-4 py-2.5 flex items-center gap-3 border-b border-[#2b2a33]">
         <div className="flex items-center gap-1">
-          <button className="p-2 rounded hover:bg-[#52515e] transition-colors">
+          <button 
+            className="p-2 rounded hover:bg-[#52515e] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={goBack}
+            disabled={historyIndex === 0}
+          >
             <ChevronLeft className="w-5 h-5 text-gray-300" />
           </button>
-          <button className="p-2 rounded hover:bg-[#52515e] transition-colors">
+          <button 
+            className="p-2 rounded hover:bg-[#52515e] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={goForward}
+            disabled={historyIndex === history.length - 1}
+          >
             <ChevronRight className="w-5 h-5 text-gray-300" />
           </button>
-          <button className="p-2 rounded hover:bg-[#52515e] transition-colors">
+          <button 
+            className="p-2 rounded hover:bg-[#52515e] transition-colors"
+            onClick={refreshPage}
+          >
             <RotateCw className="w-5 h-5 text-gray-300" />
           </button>
           <button 
@@ -128,9 +170,9 @@ export function BrowserFrame({ children, currentPage, onNavigate }: BrowserFrame
       </div>
 
       {/* Page Content */}
-      <div className="flex-1 overflow-auto bg-slate-900 pt-4">
+      <div className="flex-1 overflow-auto bg-slate-900 pt-4" key={refreshKey}>
         <motion.div
-          key={currentPage}
+          key={`${currentPage}-${refreshKey}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}

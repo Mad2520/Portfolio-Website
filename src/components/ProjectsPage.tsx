@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ExternalLink, Github, Award, Calendar, Tag } from 'lucide-react';
 
@@ -169,6 +169,68 @@ Respect des bonnes pratiques et sécurité des systèmes critiques`,
     ]
   },
   {
+    id: 11,
+    title: "Mise en place d'applicatif avec Docker",
+    description: "Conteneurisation d'un applicatif métier avec Docker et orchestration orientée haute disponibilité.",
+    category: "Formation",
+    longDescription: `Dans le cadre du projet GSB (Galaxy Swiss Bourdin), l’entreprise souhaitait centraliser la gestion des notes de frais des visiteurs médicaux afin d’uniformiser les pratiques entre les différentes structures. L’application devait rester disponible en permanence pour éviter toute interruption de service. Le besoin principal était donc de mettre en place une solution fiable avec haute disponibilité, capable de continuer à fonctionner même en cas de panne d’un conteneur ou d’une machine virtuelle.`,
+    image: "/odoo.PNG",
+    competences: ["Docker", "Docker Swarm", "Haute disponibilité"],
+    technologies: ["Docker", "Docker Swarm", "Odoo", "PostgreSQL", "Linux"],
+    date: "2024",
+    preuves: ["Dockerfile", "docker-compose.yml", "Tests de déploiement"],
+    sections: [
+      {
+        title: "Contexte / Problématique",
+        content: "Dans le cadre du projet GSB (Galaxy Swiss Bourdin), l’entreprise souhaitait centraliser la gestion des notes de frais des visiteurs médicaux afin d’uniformiser les pratiques entre les différentes structures. L’application devait rester disponible en permanence pour éviter toute interruption de service. Le besoin principal était donc de mettre en place une solution fiable avec haute disponibilité, capable de continuer à fonctionner même en cas de panne d’un conteneur ou d’une machine virtuelle."
+      },
+      {
+        title: "Objectif",
+        content: "Déployer Odoo pour la gestion des notes de frais dans une architecture redondée avec Docker Swarm afin d’assurer la continuité de service."
+      },
+      {
+        title: "Solution mise en place",
+        content: "J’ai mis en place un cluster Docker Swarm sur deux machines virtuelles avec : un nœud manager et un nœud worker ; le déploiement du conteneur Odoo ; la relance automatique du conteneur en cas de crash ; la bascule sur la seconde VM si la première devient indisponible ; la connexion à PostgreSQL pour la gestion des données. Cette solution garantit la disponibilité de l’application même en cas de panne."
+      },
+      {
+        title: "Pourquoi cette méthode",
+        content: "Docker Swarm permet de gérer simplement la haute disponibilité des conteneurs : redémarrage automatique, tolérance aux pannes, continuité de service et administration simplifiée. Cette solution est fiable et adaptée à un environnement professionnel."
+      },
+      {
+        title: "Résultats obtenus",
+        content: "Application Odoo disponible en continu ; réduction des interruptions de service ; relance automatique des conteneurs ; infrastructure plus fiable et maintenable."
+      }
+    ],
+    link: "https://docs.google.com/document/d/1WvbfxcvQfZcsPJcrYlDGrnqru1VDA7xKJWwT4XiQ1CY/edit?usp=sharing"
+  },
+  {
+    id: 12,
+    title: "Installation d'un serveur SCCM pour un PXE",
+    description: "Configuration d'un serveur SCCM avec point PXE pour déployer automatiquement des postes Windows.",
+    category: "Formation",
+    longDescription: `Déploiement d'un environnement Microsoft SCCM permettant d'automatiser l'installation et la maintenance des postes via PXE. Ce projet a inclus la préparation du serveur, la création des images système et la configuration du point de distribution PXE pour simplifier les déploiements.`,
+    image: "/sccm.png",
+    competences: ["SCCM", "Déploiement PXE", "Gestion de parc"],
+    technologies: ["SCCM", "PXE", "Windows Deployment Services", "Active Directory"],
+    date: "2024",
+    preuves: ["Capture SCCM", "Configuration PXE", "Journal de déploiement"],
+    sections: [
+      {
+        title: "Contexte / Objectif",
+        content: "L'équipe IT devait déployer de nouveaux postes et réinstaller rapidement des machines existantes. Le but était de centraliser le processus d'installation avec SCCM et PXE pour réduire le temps d'intervention et garantir des images standards."
+      },
+      {
+        title: "Solution mise en place",
+        content: "Installation d'un serveur SCCM et intégration avec Active Directory, configuration d'un point de distribution PXE et création d'images Windows standardisées, tests de déploiement sur plusieurs modèles de postes, et documentation des procédures pour le support."
+      },
+      {
+        title: "Résultats obtenus",
+        content: "Déploiement automatisé des postes via PXE, réduction du temps de configuration manuelle, cohérence des images installées sur l'ensemble du parc, et simplification des réinstallations système."
+      }
+    ],
+    link: "https://docs.google.com/document/d/1msQ1PJcItX8WUpi835KwnlJFXOmVgEHu2NW72BmGy_Y/edit?usp=sharing"
+  },
+  {
     id: 4,
     title: "Gestion Active Directory & GPO",
     description: "Création/gestion de comptes, droits et GPO pour homogénéiser la sécurité",
@@ -250,15 +312,16 @@ Respect des bonnes pratiques et sécurité des systèmes critiques`,
   },
   {
     id: 10,
-    title: "Projets réalisés en formation",
-    description: "Veille technologique, apprentissage continu et gestion de portfolio",
+    title: "Mise en place d'un annuaire LDAP sous Debian",
+    description: "Mise en place d'un annuaire LDAP sous Debian en formation",
     category: "Formation",
-    longDescription: "Mise en place d’une infrastructure réseau complète, avec configuration des services d’infrastructure tels qu’un serveur DHCP et DNS. Nous avons également sécurisé les accès à l’aide d’OpenSSL. Par ailleurs, nous avons déployé plusieurs services, notamment un serveur LAMP, un serveur FTP, un serveur de messagerie, un annuaire LDAP ainsi qu’un serveur HAProxy configuré en reverse proxy.",
+    longDescription: "Mise en place d'un annuaire LDAP sous Debian en formation.",
     image: "/formationContinu.png",
-    competences: ["Mise en place service", "Formation continue"],
-    technologies: ["Ressources en ligne", "Formations"],
+    competences: ["LDAP", "Annuaire", "Formation continue"],
+    technologies: ["LDAP", "Debian", "OpenLDAP"],
     date: "En continu",
-    preuves: ["Liste de formations"]
+    preuves: ["Configuration LDAP", "Tests d'intégration"],
+    link: "https://docs.google.com/document/d/1uuqdHm_BrqFUXqKs-Ay6dAIm7jvtuuq0_9RbK8gpXAs/edit?usp=sharing"
   }
 ];
 
@@ -275,26 +338,26 @@ export function ProjectsPage() {
     : projects.filter(p => p.category === filterCategory);
 
   return (
-    <div className="min-h-full bg-slate-900 p-8">
+    <div className="min-h-full bg-slate-900 p-4 sm:p-6 md:p-8">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="max-w-7xl mx-auto"
       >
-        <h1 className="text-5xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl mb-2 sm:mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
           Mes Réalisations Professionnelles
         </h1>
-        <p className="text-gray-400 text-xl mb-8">
+        <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-6 sm:mb-8">
           {projects.length} projets réalisés - Compétences mobilisées et éléments de preuve
         </p>
 
         {/* Filters */}
-        <div className="mb-8 flex gap-3 flex-wrap">
+        <div className="mb-8 flex gap-2 sm:gap-3 flex-wrap">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setFilterCategory('all')}
-            className={`px-6 py-2 rounded-full transition-colors ${
+            className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm rounded-full transition-colors ${
               filterCategory === 'all' 
                 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white' 
                 : 'bg-[#2b2a33] text-gray-300 hover:bg-[#38373f] border border-[#3a3944]'
@@ -308,7 +371,7 @@ export function ProjectsPage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setFilterCategory(cat)}
-              className={`px-6 py-2 rounded-full transition-colors ${
+              className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm rounded-full transition-colors whitespace-nowrap ${
                 filterCategory === cat 
                   ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white' 
                   : 'bg-[#2b2a33] text-gray-300 hover:bg-[#38373f] border border-[#3a3944]'
@@ -322,7 +385,7 @@ export function ProjectsPage() {
         {/* Projects Grid */}
         <motion.div 
           layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
@@ -375,11 +438,6 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
       <div className="p-6">
         <p className="text-gray-600 mb-4">{project.description}</p>
         
-        <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-          <Calendar className="w-4 h-4" />
-          {project.date}
-        </div>
-
         <div className="flex flex-wrap gap-2 mb-4">
           {project.competences.slice(0, 2).map((comp) => (
             <span key={comp} className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
@@ -426,10 +484,6 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-start z-10">
           <div>
             <h2 className="text-3xl mb-2">{project.title}</h2>
-            <div className="flex items-center gap-2 text-gray-600">
-              <Calendar className="w-4 h-4" />
-              {project.date}
-            </div>
           </div>
           <button
             onClick={onClose}
@@ -544,7 +598,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full flex items-center gap-2"
                 >
                   <ExternalLink className="w-5 h-5" />
-                  Voir le projet
+                  Procédure
                 </motion.a>
               )}
               {project.github && (
@@ -569,7 +623,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 function ProjectImage({ query, alt, isFullSize }: { query: string; alt: string; isFullSize?: boolean }) {
   const [imageUrl, setImageUrl] = useState<string>('');
 
-  useState(() => {
+  useEffect(() => {
     // Si c'est un chemin local (commence par /), l'utiliser directement
     if (query.startsWith('/')) {
       setImageUrl(query);
@@ -579,7 +633,7 @@ function ProjectImage({ query, alt, isFullSize }: { query: string; alt: string; 
         module.getUnsplashImage(query).then(url => setImageUrl(url));
       });
     }
-  });
+  }, [query]);
 
   if (!imageUrl) {
     return <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600"></div>;

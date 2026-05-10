@@ -123,7 +123,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </motion.div>
 
         {/* Navigation Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 w-full max-w-6xl mx-auto mt-16 sm:mt-20 md:mt-24">
+        <div className="flex flex-wrap justify-center gap-6 w-full mx-auto mt-16 sm:mt-20 md:mt-24 px-2">
           {sections.map((section, index) => {
             const Icon = section.icon;
             return (
@@ -134,30 +134,30 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 transition={{ delay: 0.2 * index, duration: 0.5 }}
                 whileHover={{ scale: 1.05, y: -10 }}
                 onClick={() => onNavigate(section.id)}
-                className="bg-[#2b2a33] rounded-2xl shadow-xl p-4 sm:p-5 md:p-6 lg:p-8 cursor-pointer overflow-hidden relative group border border-[#3a3944] hover:border-[#4a4958] transition-colors flex flex-col min-h-[240px] sm:min-h-[260px] md:min-h-[280px]" 
+                className="bg-[#2b2a33] rounded-2xl shadow-xl p-6 md:p-8 lg:p-10 cursor-pointer overflow-hidden relative group border border-[#3a3944] hover:border-[#4a4958] transition-colors flex flex-col min-h-[300px] md:min-h-[360px] lg:min-h-[400px] flex-1 min-w-[20%]" 
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${section.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${section.color} flex items-center justify-center mb-4 sm:mb-5 md:mb-6 shadow-lg flex-shrink-0`}
+                  className={`w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 rounded-2xl md:rounded-3xl bg-gradient-to-br ${section.color} flex items-center justify-center mb-4 md:mb-6 lg:mb-8 shadow-lg flex-shrink-0`}
                 >
-                  <Icon className="w-8 h-8 text-white" />
+                  <Icon className="w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 text-white" />
                 </motion.div>
 
                 <div className="flex-grow">
-                  <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl mb-2 sm:mb-3 text-gray-100 leading-tight">{section.title}</h3>
-                  <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-relaxed">{section.description}</p>
+                  <h3 className="text-base md:text-xl lg:text-2xl xl:text-3xl mb-2 md:mb-4 lg:mb-5 text-gray-100 leading-tight font-semibold">{section.title}</h3>
+                  <p className="text-xs md:text-sm lg:text-base xl:text-lg text-gray-400 leading-relaxed">{section.description}</p>
                 </div>
 
-                <div className="flex items-center justify-start text-purple-400 group-hover:text-purple-300 mt-4 sm:mt-5 text-xs sm:text-sm md:text-base pt-2 sm:pt-3">
+                <div className="flex items-center justify-start text-purple-400 group-hover:text-purple-300 mt-4 md:mt-6 lg:mt-8 text-xs md:text-sm lg:text-base pt-3 md:pt-4">
                   <span className="mr-2">Découvrir</span>
                   <motion.div
                     animate={{ x: [0, 5, 0] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
                   >
-                    <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5" />
+                    <ArrowRight className="w-5 md:w-6 lg:w-7 h-5 md:h-6 lg:h-7" />
                   </motion.div>
                 </div>
               </motion.div>

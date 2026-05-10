@@ -171,7 +171,7 @@ Respect des bonnes pratiques et sécurité des systèmes critiques`,
   {
     id: 11,
     title: "Mise en place d'applicatif avec Docker",
-    description: "Conteneurisation d'un applicatif métier avec Docker et orchestration orientée haute disponibilité.",
+    description: "Conteneurisation d'un applicatif métier avec Docker et orchestration orientée haute disponibilité. - Projet en formation",
     category: "Formation",
     longDescription: `Dans le cadre du projet GSB (Galaxy Swiss Bourdin), l’entreprise souhaitait centraliser la gestion des notes de frais des visiteurs médicaux afin d’uniformiser les pratiques entre les différentes structures. L’application devait rester disponible en permanence pour éviter toute interruption de service. Le besoin principal était donc de mettre en place une solution fiable avec haute disponibilité, capable de continuer à fonctionner même en cas de panne d’un conteneur ou d’une machine virtuelle.`,
     image: "/odoo.PNG",
@@ -205,27 +205,27 @@ Respect des bonnes pratiques et sécurité des systèmes critiques`,
   },
   {
     id: 12,
-    title: "Installation d'un serveur SCCM pour un PXE",
-    description: "Configuration d'un serveur SCCM avec point PXE pour déployer automatiquement des postes Windows.",
+    title: "Mise en place d'une solution d'inventaire et d'administration centralisée du parc informatique avec SCCM",
+    description: "Déploiement de Microsoft Endpoint Configuration Manager pour centraliser la gestion du parc informatique avec inventaire automatique et administration des clients. - Projet en formation",
     category: "Formation",
-    longDescription: `Déploiement d'un environnement Microsoft SCCM permettant d'automatiser l'installation et la maintenance des postes via PXE. Ce projet a inclus la préparation du serveur, la création des images système et la configuration du point de distribution PXE pour simplifier les déploiements.`,
+    longDescription: `Mise en place d'une solution SCCM (Microsoft Endpoint Configuration Manager) pour transformer une gestion de parc fragmentée en une administration centralisée, automatisée et intelligente. Ce projet inclut l'installation du serveur, l'intégration à Active Directory et SQL Server, la configuration de la découverte automatique des postes, et la mise en place de collections dynamiques pour l'analyse et la maintenance du parc informatique.`,
     image: "/sccm.png",
-    competences: ["SCCM", "Déploiement PXE", "Gestion de parc"],
-    technologies: ["SCCM", "PXE", "Windows Deployment Services", "Active Directory"],
+    competences: ["SCCM", "SQL Server", "Active Directory", "Administration réseau", "Inventaire IT"],
+    technologies: ["SCCM", "SQL Server 2019", "Windows Server 2022", "Active Directory", "PowerShell", "WQL"],
     date: "2024",
-    preuves: ["Capture SCCM", "Configuration PXE", "Journal de déploiement"],
+    preuves: ["Documentation SCCM", "Scripts PowerShell", "Requêtes WQL", "Configurations Active Directory"],
     sections: [
       {
-        title: "Contexte / Objectif",
-        content: "L'équipe IT devait déployer de nouveaux postes et réinstaller rapidement des machines existantes. Le but était de centraliser le processus d'installation avec SCCM et PXE pour réduire le temps d'intervention et garantir des images standards."
+        title: "Contexte / Problématique",
+        content: "Dans le cadre de l'évolution du Système d'Information du laboratoire GSB, la gestion du parc informatique est devenue un enjeu majeur. Avec un grand nombre de visiteurs médicaux mobiles et des postes de travail répartis sur plusieurs sites, la DSI ne dispose plus d'une visibilité précise sur ses actifs. Il est impossible de savoir quels postes sont obsolètes, quels logiciels sont installés, ou quels composants matériels sont présents."
       },
       {
-        title: "Solution mise en place",
-        content: "Installation d'un serveur SCCM et intégration avec Active Directory, configuration d'un point de distribution PXE et création d'images Windows standardisées, tests de déploiement sur plusieurs modèles de postes, et documentation des procédures pour le support."
+        title: "Objectif",
+        content: "Mettre en place un serveur SCCM (Microsoft Endpoint Configuration Manager) pour centraliser l'administration du parc informatique avec trois axes : Visibilité - Inventaire automatique. Automatisation - Découverte des nouveaux postes via l'Active Directory sans intervention manuelle. Analyse - Création de collections dynamiques pour identifier les postes obsolètes, ceux avec peu d'espace disque, ou disposant de peu de RAM."
       },
       {
         title: "Résultats obtenus",
-        content: "Déploiement automatisé des postes via PXE, réduction du temps de configuration manuelle, cohérence des images installées sur l'ensemble du parc, et simplification des réinstallations système."
+        content: "La mise en place de Microsoft Endpoint Configuration Manager au sein du laboratoire GSB marque une étape clé dans la modernisation de son infrastructure. Cet projet a permis de transformer une gestion de parc jusqu'alors manuelle et fragmentée en une administration centralisée, automatisée et intelligente. Visibilité complète sur les actifs informatiques, découverte automatique des nouveaux postes, identification proactive des machines obsolètes ou mal configurées, et administration simplifiée du parc informatique distribué."
       }
     ],
     link: "https://docs.google.com/document/d/1msQ1PJcItX8WUpi835KwnlJFXOmVgEHu2NW72BmGy_Y/edit?usp=sharing"

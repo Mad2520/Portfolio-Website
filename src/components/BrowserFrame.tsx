@@ -22,6 +22,7 @@ export function BrowserFrame({ children, currentPage, onNavigate }: BrowserFrame
     home: { title: 'Accueil - Mon Portfolio', url: 'portfolio.dev/home' },
     projects: { title: 'Mes Projets', url: 'portfolio.dev/projets' },
     cv: { title: 'Mon CV', url: 'portfolio.dev/cv' },
+    certifications: { title: 'Certifications', url: 'portfolio.dev/certifications' },
     veille: { title: 'Veille Technologique', url: 'portfolio.dev/veille' },
     synthesis: { title: 'Tableau de Synthèse', url: 'portfolio.dev/synthese' },
   };
@@ -104,29 +105,28 @@ export function BrowserFrame({ children, currentPage, onNavigate }: BrowserFrame
       </div>
 
       {/* Tabs Bar - Firefox Style */}
-      <div className="bg-[#2b2a33] flex items-end">
+      <div className="bg-[#2b2a33] flex flex-row flex-nowrap gap-2 overflow-x-auto px-2 py-2 lg:grid lg:grid-cols-1 lg:gap-2 lg:overflow-visible">
         {tabs.map((tab) => (
           <motion.div
             key={tab.id}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`px-4 py-2.5 flex items-center gap-2 cursor-pointer min-w-[200px] max-w-[350px] relative ${
-              tab.active 
-                ? 'bg-[#42414d] text-white' 
-                : 'bg-[#2b2a33] text-gray-400 hover:bg-[#38373f]'
-            } transition-colors rounded-t-lg mx-0.5`}
+            className={`w-auto lg:w-full min-w-[210px] lg:min-w-0 px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 flex items-center gap-3 cursor-pointer relative ${
+              tab.active
+                ? 'bg-[#42414d] text-white'
+                : 'bg-[#2b2a33] text-gray-300 hover:bg-[#38373f]'
+            } transition-colors rounded-3xl`}
             onClick={() => onNavigate(tab.id)}
           >
-            <div className="flex-1 text-sm">{tab.title}</div>
+            <div className="flex-1 text-sm sm:text-base md:text-base font-medium truncate">{tab.title}</div>
             {tabs.length > 1 && (
-              <X 
-                className="w-4 h-4 text-gray-400 hover:text-white flex-shrink-0 transition-colors" 
+              <X
+                className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-white transition-colors"
                 onClick={(e) => closeTab(tab.id, e)}
               />
             )}
           </motion.div>
         ))}
-        <div className="flex-1 bg-[#2b2a33]"></div>
       </div>
 
       {/* Navigation Bar - Firefox Dark */}

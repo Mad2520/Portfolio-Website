@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Code, Briefcase, FileText, Newspaper, BarChart3, ArrowRight, Search } from 'lucide-react';
+import { Code, Briefcase, FileText, Newspaper, BarChart3, Award, ArrowRight, Search } from 'lucide-react';
 import { useState } from 'react';
 import { HybridAvatar } from './HybridAvatar';
 
@@ -27,6 +27,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
       description: 'Parcours et compétences'
     },
     { 
+      id: 'certifications', 
+      title: 'Certifications', 
+      icon: Award, 
+      color: 'from-sky-500 to-blue-500',
+      description: 'Formations et certificats obtenus'
+    },
+    { 
       id: 'veille', 
       title: 'Veille Technologique', 
       icon: Newspaper, 
@@ -48,20 +55,22 @@ export function HomePage({ onNavigate }: HomePageProps) {
       onNavigate('projects');
     } else if (term.includes('cv')) {
       onNavigate('cv');
+    } else if (term.includes('certif') || term.includes('formation')) {
+      onNavigate('certifications');
     } else if (term.includes('veille')) {
       onNavigate('veille');
     } else if (term.includes('synth') || term.includes('tableau')) {
       onNavigate('synthesis');
     } else {
       // Perhaps show a message or do nothing
-      alert('Terme de recherche non reconnu. Essayez "projets", "cv", "veille", ou "synthèse".');
+      alert('Terme de recherche non reconnu. Essayez "projets", "cv", "certifications", "veille", ou "synthèse".');
     }
   };
 
   return (
     <div className="min-h-full bg-[#1c1b22]">
       {/* Hero Section */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
+      <div className="w-full max-w-none mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -123,7 +132,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </motion.div>
 
         {/* Navigation Cards */}
-        <div className="flex flex-wrap justify-center gap-6 w-full mx-auto mt-16 sm:mt-20 md:mt-24 px-2">
+        <style>{`.home-sections-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+          @media (min-width: 45rem) { .home-sections-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }`}</style>
+        <div className="w-full mx-auto mt-16 sm:mt-20 md:mt-24 px-2">
+          <div className="home-sections-grid">
           {sections.map((section, index) => {
             const Icon = section.icon;
             return (
@@ -134,35 +146,37 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 transition={{ delay: 0.2 * index, duration: 0.5 }}
                 whileHover={{ scale: 1.05, y: -10 }}
                 onClick={() => onNavigate(section.id)}
-                className="bg-[#2b2a33] rounded-2xl shadow-xl p-6 md:p-8 lg:p-10 cursor-pointer overflow-hidden relative group border border-[#3a3944] hover:border-[#4a4958] transition-colors flex flex-col min-h-[300px] md:min-h-[360px] lg:min-h-[400px] flex-1 min-w-[20%]" 
-              >
+                className="bg-[#2b2a33] rounded-2xl shadow-xl p-4 cursor-pointer overflow-hidden relative group border border-[#3a3944] hover:border-[#4a4958] transition-colors flex flex-col items-stretch w-full h-full"
+               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${section.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                  className={`w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 rounded-2xl md:rounded-3xl bg-gradient-to-br ${section.color} flex items-center justify-center mb-4 md:mb-6 lg:mb-8 shadow-lg flex-shrink-0`}
-                >
-                  <Icon className="w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 text-white" />
-                </motion.div>
 
-                <div className="flex-grow">
-                  <h3 className="text-base md:text-xl lg:text-2xl xl:text-3xl mb-2 md:mb-4 lg:mb-5 text-gray-100 leading-tight font-semibold">{section.title}</h3>
-                  <p className="text-xs md:text-sm lg:text-base xl:text-lg text-gray-400 leading-relaxed">{section.description}</p>
-                </div>
+                <div className="w-full aspect-square flex flex-col">
+                  <div className="flex-1 flex flex-col items-center justify-center p-4">
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                      className={`w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-2xl bg-gradient-to-br ${section.color} flex items-center justify-center mb-4 shadow-lg`}
+                    >
+                      <Icon className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white" />
+                    </motion.div>
 
-                <div className="flex items-center justify-start text-purple-400 group-hover:text-purple-300 mt-4 md:mt-6 lg:mt-8 text-xs md:text-sm lg:text-base pt-3 md:pt-4">
-                  <span className="mr-2">Découvrir</span>
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ repeat: Infinity, duration: 1.5 }}
-                  >
-                    <ArrowRight className="w-5 md:w-6 lg:w-7 h-5 md:h-6 lg:h-7" />
-                  </motion.div>
+                    <h3 className="text-lg md:text-xl lg:text-2xl mb-2 text-gray-100 leading-tight font-semibold text-center">{section.title}</h3>
+                    <p className="text-sm md:text-base text-gray-400 text-center">{section.description}</p>
+                  </div>
+
+                  <div className="px-6 pb-4">
+                    <div className="flex items-center justify-center text-purple-400 group-hover:text-purple-300 text-sm md:text-base">
+                      <span className="mr-2">Découvrir</span>
+                      <motion.div animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+                        <ArrowRight className="w-5 h-5" />
+                      </motion.div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             );
           })}
+          </div>
         </div>
 
         {/* About Section */}

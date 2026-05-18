@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Lock, Search, Clock, FileText, Briefcase, Code, Home as HomeIcon } from 'lucide-react';
+import { Lock, Search, Clock, FileText, Briefcase, Code, Home as HomeIcon, Award } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface SearchBarProps {
@@ -43,8 +43,13 @@ export function SearchBar({ currentUrl, onNavigate }: SearchBarProps) {
       icon: <FileText className="w-4 h-4" />,
       type: 'page'
     },
-    { 
-      id: 'veille', 
+    {       id: 'certifications', 
+      title: 'Certifications - Formations et certificats', 
+      url: 'portfolio.dev/certifications',
+      icon: <Award className="w-4 h-4" />, 
+      type: 'page'
+    },
+    {       id: 'veille', 
       title: 'Veille Technologique - Articles & Analyses', 
       url: 'portfolio.dev/veille',
       icon: <Code className="w-4 h-4" />,

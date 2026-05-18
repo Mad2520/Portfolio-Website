@@ -5,6 +5,7 @@ import { ProjectsPage } from './components/ProjectsPage';
 import { CVPage } from './components/CVPage';
 import { VeillePage } from './components/VeillePage';
 import { SynthesisPage } from './components/SynthesisPage';
+import { CertificationsPage } from './components/CertificationsPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -21,6 +22,8 @@ export default function App() {
         return <VeillePage />;
       case 'synthesis':
         return <SynthesisPage />;
+      case 'certifications':
+        return <CertificationsPage />;
       default:
         return <HomePage onNavigate={setCurrentPage} />;
     }
